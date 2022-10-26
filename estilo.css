@@ -1,0 +1,74 @@
+body {
+    height: 100vh;
+    margin: 0;
+
+    display: grid;
+    grid-template-areas: "header header"
+    "main aside"
+    "footer footer";
+
+    grid-template-rows: 10% 80fr 10%;
+    grid-template-columns: 80% 20%;
+}
+
+header {
+    grid-area: header;
+
+    border: 1px solid red;
+}
+
+main {
+    grid-area: main;
+    border: 1px solid green;
+}
+
+aside {
+    grid-area: aside;
+
+    border: 1px solid blue;
+}
+
+footer {
+    grid-area: footer;
+
+    border: 1px solid orange;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.menu ul, li, a{
+    display: inline;
+    text-decoration: none;
+}
+
+.menu a { 
+    padding: 10px;
+    margin: 3px;
+}
+
+.menu a:hover { 
+    background-color: gray;
+}
+
+.produto {
+    width: 300px;
+    height: 300px;
+    border: 1px solid red;
+    float: left;
+    border-radius: 10px;
+    margin: 3px;
+    padding: 10px;
+}
+
+.produto img {
+    width: 300px;
+    height: 200px;
+}
+
+.produto:hover {
+    width: 310px;
+}
