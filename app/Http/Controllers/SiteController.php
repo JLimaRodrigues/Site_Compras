@@ -10,7 +10,8 @@ use Illuminate\Http\Response;
 
 class SiteController {
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
 
         //INSTANCIA PRINCIPAL DO PAYLOAD PIX
         $objPayload = (new Payload)->setChavePix('12345678900')
@@ -28,10 +29,15 @@ class SiteController {
 
         //IMAGEM DO QRCODE
         $imagem =  (new Output\Svg)->output($objQrcode, 400, 'white', 'black');
-        echo $imagem;
+        // echo $imagem;
+        // echo "<br>";
+        // echo $payloadQrCode;
+        // echo "<br>";
 
-        return response('index', 200)
-                        ->header('Content-Type', 'image/png');
+        return view('principal.index', [
+            'imagem' => $imagem,
+            'hash' => $payloadQrCode
+        ]);
     }
 }
 
