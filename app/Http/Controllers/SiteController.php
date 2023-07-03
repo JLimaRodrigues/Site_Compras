@@ -29,12 +29,7 @@ class SiteController {
 
         //IMAGEM DO QRCODE
         $imagem =  (new Output\Svg)->output($objQrcode, 400, 'white', 'black');
-        // echo $imagem;
-        // echo "<br>";
-        // echo $payloadQrCode;
-        // echo "<br>";
-
-        return view('principal.index', [
+        return view('site.index', [
             'imagem' => $imagem,
             'hash' => $payloadQrCode
         ]);
