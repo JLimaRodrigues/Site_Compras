@@ -12,6 +12,9 @@ Route::get('/', [SiteController::class, 'index']);
 /* Rotas de compra */
 
 /* Rotas de Suporte */
-Route::post('/suporte', [SuporteController::class, 'registrar'])->name('suporte.registrar');
+Route::put('/suporte/{id}', [SuporteController::class , 'atualizar'])->name('suporte.atualizar');
+Route::get('/suporte/{id}/editar', [SuporteController::class, 'editar'])->name('suporte.editar');
 Route::get('/suporte/criar', [SuporteController::class, 'criar'])->name('suporte.criar');
+Route::get('/suporte/{id}', [SuporteController::class, 'mostrar'])->name('suporte.mostrar');
+Route::post('/suporte', [SuporteController::class, 'registrar'])->name('suporte.registrar');
 Route::get('/suporte', [SuporteController::class, 'index'])->name('suporte.index');

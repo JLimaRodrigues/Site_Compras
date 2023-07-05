@@ -16,7 +16,8 @@
                 <td>{{ $suporte->status }}</td>
                 <td>{{ $suporte->conteudo }}</td>
                 <td>  
-                    >
+                    <a href="{{ route('suporte.mostrar', $suporte->id) }}">Ir</a>
+                    <a href="{{ route('suporte.editar', $suporte->id) }}">Editar</a>
                 </td>
             </tr>
         @endforeach

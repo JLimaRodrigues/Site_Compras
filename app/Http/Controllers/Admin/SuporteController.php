@@ -13,9 +13,19 @@ class SuporteController extends Controller
         $suportes = Suporte::all();
         //dd($suportes);
 
-        return view('admin.suporte.index', [
-            'suportes' => $suportes
-        ]);
+        return view('admin.suporte.index', compact('suportes'));
+    }
+
+    public function mostrar(string|int $id)
+    {
+        //Suporte::find($id);
+        //Suporte::where('id', $id)->first();
+        //Suporte::where('id', '!=', $id)->first();
+        if(!$suporte = Suporte::find($id)){
+            return back();
+        }
+        
+        return view('admin.suporte.mostrar', compact('suporte'));
     }
 
     public function criar()
@@ -29,6 +39,32 @@ class SuporteController extends Controller
         $data['status'] = 'a';
 
         $suporte->create($data);
+
+        return redirect()->route('suporte.index');
+    }
+
+    public function editar(Suporte $suporte, string|int $id)
+    {
+        if(!$suporte = Suporte::find($id)){
+            return back();
+        }
+
+        return view('admin.suporte.editar', compact('suporte'));
+    }
+
+    public function atualizar(Request $request, Suporte $suporte, string|int $id)
+    {
+        if(!$suporte = $suporte->find($id)){
+            return back();
+        }
+
+        // $suporte->assunto = $request->assunto;
+        // $suporte->conteudo = $request->conteudo;
+        // $suporte->save();
+
+        $suporte->update($request->only([
+            'assunto', 'conteudo'
+        ]));
 
         return redirect()->route('suporte.index');
     }
