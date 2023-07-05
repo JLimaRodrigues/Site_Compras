@@ -1,5 +1,7 @@
 <h1>Listagem de Solicitações</h1>
 
+<a href="{{ route('suporte.criar') }}">Criar Dúvida</a>
+
 <table>
     <thead>
         <th>Assunto</th>

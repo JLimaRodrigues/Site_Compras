@@ -12,4 +12,6 @@ Route::get('/', [SiteController::class, 'index']);
 /* Rotas de compra */
 
 /* Rotas de Suporte */
+Route::post('/suporte', [SuporteController::class, 'registrar'])->name('suporte.registrar');
+Route::get('/suporte/criar', [SuporteController::class, 'criar'])->name('suporte.criar');
 Route::get('/suporte', [SuporteController::class, 'index'])->name('suporte.index');
