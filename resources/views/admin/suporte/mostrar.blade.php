@@ -7,3 +7,9 @@
     <li>Status: {{ $suporte->status }}</li>
     <li>Descrição: {{ $suporte->conteudo }}</li>
 </ul>
+
+<form action="{{ route('suporte.deletar', $suporte->id) }}" method="POST">
+    @csrf()
+    @method('DELETE')
+    <button type="submit">Deletar</button>
+</form>

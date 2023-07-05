@@ -33,7 +33,7 @@ class SuporteController extends Controller
         return view('admin.suporte.criar');
     }
 
-    public function registrar(Request $request, Suporte $suporte)
+    public function registrar(SuporteRequest $request, Suporte $suporte)
     {
         $data = $request->all();
         $data['status'] = 'a';
@@ -65,6 +65,17 @@ class SuporteController extends Controller
         $suporte->update($request->only([
             'assunto', 'conteudo'
         ]));
+
+        return redirect()->route('suporte.index');
+    }
+
+    public function deletar(string|int $id)
+    {
+        if(!$suporte = Suporte::find($id)){
+            return back();
+        }
+
+        $suporte->delete();
 
         return redirect()->route('suporte.index');
     }

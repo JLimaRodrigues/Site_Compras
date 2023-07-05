@@ -12,6 +12,7 @@ Route::get('/', [SiteController::class, 'index']);
 /* Rotas de compra */
 
 /* Rotas de Suporte */
+Route::delete('/suporte/{id}', [SuporteController::class, 'deletar'])->name('suporte.deletar');
 Route::put('/suporte/{id}', [SuporteController::class , 'atualizar'])->name('suporte.atualizar');
 Route::get('/suporte/{id}/editar', [SuporteController::class, 'editar'])->name('suporte.editar');
 Route::get('/suporte/criar', [SuporteController::class, 'criar'])->name('suporte.criar');
