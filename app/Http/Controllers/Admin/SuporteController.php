@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DTO\CriarSuporteDTO;
+use App\DTO\AtualizarSuporteDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SuporteRequest;
 use App\Models\Suporte;
@@ -19,16 +21,12 @@ class SuporteController extends Controller
     {
 
         $suportes = $this->service->getAll($request->filter);
-        //dd($suportes);
 
         return view('admin.suporte.index', compact('suportes'));
     }
 
     public function mostrar(string $id)
     {
-        //Suporte::find($id);
-        //Suporte::where('id', $id)->first();
-        //Suporte::where('id', '!=', $id)->first();
         if(!$suporte = $this->service->get($id)){
             return back();
         }
@@ -43,17 +41,15 @@ class SuporteController extends Controller
 
     public function registrar(SuporteRequest $request, Suporte $suporte)
     {
-        $data = $request->validated();
-        $data['status'] = 'a';
-
-        $suporte->create($data);
+        $this->service->novo(
+            CriarSuporteDTO::makeFromRequest($request)
+        );
 
         return redirect()->route('suporte.index');
     }
 
     public function editar(string $id)
     {
-        //if(!$suporte = Suporte::find($id)){
         if(!$suporte = $this->service->get($id)){
             return back();
         }
@@ -61,17 +57,16 @@ class SuporteController extends Controller
         return view('admin.suporte.editar', compact('suporte'));
     }
 
-    public function atualizar(Request $request, Suporte $suporte, string|int $id)
+    public function atualizar(SuporteRequest $request)
     {
-        if(!$suporte = $suporte->find($id)){
+
+        $suporte = $this->service->atualiza(
+            AtualizarSuporteDTO::makeFromRequest($request)
+        );
+
+        if(!$suporte){
             return back();
         }
-
-        // $suporte->assunto = $request->assunto;
-        // $suporte->conteudo = $request->conteudo;
-        // $suporte->save();
-
-        $suporte->update($request->validated());
 
         return redirect()->route('suporte.index');
     }

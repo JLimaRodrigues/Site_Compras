@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use stdClass;
+use App\DTO\CriarSuporteDTO;
+use App\DTO\AtualizarSuporteDTO;
 
 class SuporteService 
 {
@@ -24,32 +26,14 @@ class SuporteService
         return $this->repositorio->get($id);
     }
 
-    public function novo(
-        string $assunto,
-        string $status,
-        string $conteudo
-    ): stdClass
+    public function novo(CriarSuporteDTO $dto): stdClass
     {
-        return $this->repositorio->novo(
-            $assunto,
-            $status,
-            $conteudo 
-        );
+        return $this->repositorio->novo($dto);
     }
 
-    public function atualiza(
-        string $id,
-        string $assunto,
-        string $status,
-        string $conteudo
-    ): stdClass|null
+    public function atualiza(AtualizarSuporteDTO $dto): stdClass|null
     {
-        return $this->repositorio->atualiza(
-            $id,
-            $assunto,
-            $status,
-            $conteudo 
-        );
+        return $this->repositorio->atualiza($dto);
     }
 
     public function deletar(string $id): void
