@@ -23,7 +23,7 @@ class SuporteEloquentORM implements SuporteRepositorioInterface
                                         $query->orWhere('conteudo','like', "%{$filter->conteudo}%");
                                     }
                             })
-                            ->all()
+                            ->get()
                             ->toArray();
     }
 
