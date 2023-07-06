@@ -3,18 +3,16 @@
 namespace App\Services;
 
 use stdClass;
-use App\DTO\CriarSuporteDTO;
-use App\DTO\AtualizarSuporteDTO;
+use App\DTO\{CriarSuporteDTO, AtualizarSuporteDTO};
+use App\Repositories\SuporteRepositorioInterface;
 
 class SuporteService 
 {
 
-    protected $repositorio;
-
-    public function __construct()
-    {
-
-    }
+    public function __construct(
+        protected SuporteRepositorioInterface $repositorio
+    )
+    {}
 
     public function getAll(string $filter = null): array
     {
@@ -26,14 +24,14 @@ class SuporteService
         return $this->repositorio->get($id);
     }
 
-    public function novo(CriarSuporteDTO $dto): stdClass
+    public function criar(CriarSuporteDTO $dto): stdClass
     {
-        return $this->repositorio->novo($dto);
+        return $this->repositorio->criar($dto);
     }
 
-    public function atualiza(AtualizarSuporteDTO $dto): stdClass|null
+    public function atualizar(AtualizarSuporteDTO $dto): stdClass|null
     {
-        return $this->repositorio->atualiza($dto);
+        return $this->repositorio->atualizar($dto);
     }
 
     public function deletar(string $id): void
