@@ -5,6 +5,10 @@ namespace App\Repositories;
 use App\DTO\{CriarSuporteDTO, AtualizarSuporteDTO};
 use stdClass;
 
+/**
+ * Interface SuporteRepositorioInterface
+ * @author Jefferson Lima Rodrigues
+*/
 interface SuporteRepositorioInterface
 {
     public function getAll(string $filter = null): array;

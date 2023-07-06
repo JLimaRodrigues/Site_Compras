@@ -9,6 +9,10 @@ use App\Models\Suporte;
 use App\Services\SuporteService;
 use Illuminate\Http\Request;
 
+/**
+ * classe SuporteController
+ * @author Jefferson Lima Rodrigues
+*/
 class SuporteController extends Controller
 {
 
@@ -16,6 +20,7 @@ class SuporteController extends Controller
         protected SuporteService $service
     ){}
 
+    //Método responsável por retornar a página inicial dos suportes
     public function index(Request $request)
     {
 
@@ -24,6 +29,7 @@ class SuporteController extends Controller
         return view('admin.suporte.index', compact('suportes'));
     }
 
+    //método resonsável por mostrar detalhes especificos de um suporte
     public function mostrar(string $id)
     {
         if(!$suporte = $this->service->get($id)){
@@ -33,11 +39,13 @@ class SuporteController extends Controller
         return view('admin.suporte.mostrar', compact('suporte'));
     }
 
+    //método responsável por retornar a view de criação de um suporte
     public function criar()
     {
         return view('admin.suporte.criar');
     }
 
+    //método responsável por registrar um suporte no banco
     public function registrar(SuporteRequest $request, Suporte $suporte)
     {
         $this->service->novo(
@@ -47,6 +55,7 @@ class SuporteController extends Controller
         return redirect()->route('suporte.index');
     }
 
+    //método responsável por retornar a view de edição de um suporte
     public function editar(string $id)
     {
         if(!$suporte = $this->service->get($id)){
@@ -56,6 +65,7 @@ class SuporteController extends Controller
         return view('admin.suporte.editar', compact('suporte'));
     }
 
+    //método responsável por atualizar o registro do suporte no banco
     public function atualizar(SuporteRequest $request)
     {
 
@@ -70,6 +80,7 @@ class SuporteController extends Controller
         return redirect()->route('suporte.index');
     }
 
+    //método responsável por deletar o registro de suporte no banco
     public function deletar(string|int $id)
     {
         $this->service->deletar($id);

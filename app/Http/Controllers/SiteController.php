@@ -8,6 +8,10 @@ use Mpdf\QrCode\Output;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * classe SiteController
+ * @author Jefferson Lima Rodrigues
+*/
 class SiteController {
 
     public function index(Request $request)

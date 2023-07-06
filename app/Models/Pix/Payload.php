@@ -2,6 +2,10 @@
 
 namespace App\Models\Pix;
 
+/**
+ * classe Payload
+ * @author Jefferson Lima Rodrigues
+*/
 class Payload {
 
     /**

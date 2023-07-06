@@ -6,6 +6,10 @@ use stdClass;
 use App\DTO\{CriarSuporteDTO, AtualizarSuporteDTO};
 use App\Repositories\SuporteRepositorioInterface;
 
+/**
+ * classe SuporteService
+ * @author Jefferson Lima Rodrigues
+*/
 class SuporteService 
 {
 

@@ -14,6 +14,11 @@ class SuporteEloquentORM implements SuporteRepositorioInterface
         protected Suporte $model
     ){}
 
+    /**
+     * Método responsável por retornar registros referente a Model
+     * @param string $filter
+     * @return array
+    */
     public function getAll(string $filter = null): array
     {
         return $this->model
@@ -27,6 +32,11 @@ class SuporteEloquentORM implements SuporteRepositorioInterface
                             ->toArray();
     }
 
+    /**
+     * Método responsável por retornar um único registro do banco
+     * @param string $id
+     * @return stdClass|null
+    */
     public function get(string $id): stdClass|null
     {
         $suporte = $this->model->find($id);
@@ -38,11 +48,21 @@ class SuporteEloquentORM implements SuporteRepositorioInterface
         return (object) $suporte->toArray();
     }
 
+    /**
+     * Método responsável por deletar um registro no banco
+     * @param string $id
+     * @return void
+    */
     public function deletar(string $id): void
     {
         $this->model->findOrFail($id)->delete();
     }
 
+    /**
+     * Método responsável por criar um registro no banco
+     * @param object $dto
+     * @return stdClass
+    */
     public function criar(CriarSuporteDTO $dto): stdClass
     {
         $suporte = $this->model->create(
@@ -52,6 +72,11 @@ class SuporteEloquentORM implements SuporteRepositorioInterface
         return (object) $suporte->toArray();
     }
 
+    /**
+     * Método responsável por atualizar um registro no banco
+     * @param object $dto
+     * @return stdClass|null
+    */
     public function atualizar(AtualizarSuporteDTO $dto): stdClass|null
     {
         if(!$suporte = $this->model->find($dto->id)){
