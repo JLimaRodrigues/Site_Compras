@@ -5,24 +5,31 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SuporteRequest;
 use App\Models\Suporte;
+use App\Services\SuporteService;
 use Illuminate\Http\Request;
 
 class SuporteController extends Controller
 {
-    public function index(){
 
-        $suportes = Suporte::all();
+    public function __construct(
+        protected SuporteService $service
+    ){}
+
+    public function index(Request $request)
+    {
+
+        $suportes = $this->service->getAll($request->filter);
         //dd($suportes);
 
         return view('admin.suporte.index', compact('suportes'));
     }
 
-    public function mostrar(string|int $id)
+    public function mostrar(string $id)
     {
         //Suporte::find($id);
         //Suporte::where('id', $id)->first();
         //Suporte::where('id', '!=', $id)->first();
-        if(!$suporte = Suporte::find($id)){
+        if(!$suporte = $this->service->get($id)){
             return back();
         }
         
@@ -44,9 +51,10 @@ class SuporteController extends Controller
         return redirect()->route('suporte.index');
     }
 
-    public function editar(SuporteRequest $suporte, string|int $id)
+    public function editar(string $id)
     {
-        if(!$suporte = Suporte::find($id)){
+        //if(!$suporte = Suporte::find($id)){
+        if(!$suporte = $this->service->get($id)){
             return back();
         }
 
@@ -70,11 +78,7 @@ class SuporteController extends Controller
 
     public function deletar(string|int $id)
     {
-        if(!$suporte = Suporte::find($id)){
-            return back();
-        }
-
-        $suporte->delete();
+        $this->service->deletar($id);
 
         return redirect()->route('suporte.index');
     }
