@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SuporteRequest;
 use App\Models\Suporte;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class SuporteController extends Controller
 
     public function registrar(SuporteRequest $request, Suporte $suporte)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['status'] = 'a';
 
         $suporte->create($data);
@@ -43,7 +44,7 @@ class SuporteController extends Controller
         return redirect()->route('suporte.index');
     }
 
-    public function editar(Suporte $suporte, string|int $id)
+    public function editar(SuporteRequest $suporte, string|int $id)
     {
         if(!$suporte = Suporte::find($id)){
             return back();
@@ -62,9 +63,7 @@ class SuporteController extends Controller
         // $suporte->conteudo = $request->conteudo;
         // $suporte->save();
 
-        $suporte->update($request->only([
-            'assunto', 'conteudo'
-        ]));
+        $suporte->update($request->validated());
 
         return redirect()->route('suporte.index');
     }

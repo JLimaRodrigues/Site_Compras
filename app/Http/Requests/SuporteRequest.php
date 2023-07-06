@@ -21,13 +21,26 @@ class SuporteRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+
+        $rules = [
             'assunto' => 'required|min:3|max:255|unique:suportes',
             'conteudo' => [
                 'required',
                 'min:3',
                 'max:100000'
             ]
-        ];
+            ];
+        
+        if($this->method() == 'PUT'){
+            $rules['assunto'] = [
+                'required',
+                'min:3',
+                'max:255',
+                //'unique:suportes,assunto,{$this->id},id'
+                Role::unique('suportes')->ignore($this->id)
+            ];
+        }
+
+        return $rules;
     }
 }
