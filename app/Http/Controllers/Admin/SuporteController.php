@@ -20,7 +20,7 @@ class SuporteController extends Controller
     {
 
         $suportes = $this->service->getAll($request->filter);
-
+        dd($suportes);
         return view('admin.suporte.index', compact('suportes'));
     }
 
