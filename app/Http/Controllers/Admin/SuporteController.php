@@ -48,7 +48,7 @@ class SuporteController extends Controller
     //método responsável por registrar um suporte no banco
     public function registrar(SuporteRequest $request, Suporte $suporte)
     {
-        $this->service->novo(
+        $this->service->criar(
             CriarSuporteDTO::makeFromRequest($request)
         );
 
@@ -69,7 +69,7 @@ class SuporteController extends Controller
     public function atualizar(SuporteRequest $request)
     {
 
-        $suporte = $this->service->atualiza(
+        $suporte = $this->service->atualizar(
             AtualizarSuporteDTO::makeFromRequest($request)
         );
 

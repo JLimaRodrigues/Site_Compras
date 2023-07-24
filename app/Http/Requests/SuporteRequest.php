@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SuporteRequest extends FormRequest
 {
@@ -37,7 +38,7 @@ class SuporteRequest extends FormRequest
                 'min:3',
                 'max:255',
                 //'unique:suportes,assunto,{$this->id},id'
-                Role::unique('suportes')->ignore($this->id)
+                Rule::unique('suportes')->ignore($this->suporte ?? $this->id)
             ];
         }
 

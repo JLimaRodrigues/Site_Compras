@@ -2,7 +2,7 @@
 
 namespace App\DTO;
 
-use App\Http\Request\SuporteRequest;
+use App\Http\Requests\SuporteRequest;
 
 class CriarSuporteDTO 
 {
