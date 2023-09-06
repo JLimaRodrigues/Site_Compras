@@ -11,6 +11,7 @@ use stdClass;
 */
 interface SuporteRepositorioInterface
 {
+    public function paginate(int $page = 1, int $totalPerPage = 10, string $filter = null): PaginationInterface;
     public function getAll(string $filter = null): array;
     public function get(string $id): stdClass|null;
     public function deletar(string $id): void;

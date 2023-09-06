@@ -18,6 +18,19 @@ class SuporteService
     )
     {}
 
+    public function paginate(
+        int $page = 1,
+        int $totalPerPage = 10,
+        string $filter = null
+    )
+    {
+        return $this->repositorio->paginate(
+            page: $page,
+            totalPerPage: $totalPerPage,
+            filter: $filter
+        );
+    }
+
     public function getAll(string $filter = null): array
     {
         return $this->repositorio->getAll($filter);
