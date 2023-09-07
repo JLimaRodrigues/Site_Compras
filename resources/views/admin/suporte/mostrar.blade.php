@@ -4,7 +4,7 @@
 
 <ul>
     <li>Assunto: {{ $suporte->assunto }}</li>
-    <li>Status: {{ $suporte->status }}</li>
+    <li>Status: {{ getStatusSuporte($suporte->status) }}</li>
     <li>Descrição: {{ $suporte->conteudo }}</li>
 </ul>
 

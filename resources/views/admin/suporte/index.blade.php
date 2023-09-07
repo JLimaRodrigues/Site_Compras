@@ -13,7 +13,7 @@
         @foreach($suportes->items() as $suporte)
             <tr>
                 <td>{{ $suporte->assunto }}</td>
-                <td>{{ $suporte->status }}</td>
+                <td>{{ getStatusSuporte($suporte->status) }}</td>
                 <td>{{ $suporte->conteudo }}</td>
                 <td>  
                     <a href="{{ route('suporte.mostrar', $suporte->id) }}">Ir</a>

@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 /* Rotas principais */
-Route::get('/', [SiteController::class, 'index']);
+//Route::get('/', [SiteController::class, 'index']);
 
 /* Rotas de compra */
 
