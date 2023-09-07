@@ -19,12 +19,12 @@ class SuporteEloquentORM implements SuporteRepositorioInterface
         $result = $this->model
                             ->where(function ($query) use ($filter){
                                     if($filter){
-                                        $query->where('assunto', $filter->assunto);
-                                        $query->orWhere('conteudo','like', "%{$filter->conteudo}%");
+                                        $query->where('assunto', $filter);
+                                        $query->orWhere('conteudo','like', "%{$filter}%");
                                     }
                             })
                             ->paginate($totalPerPage, ['*'], 'page', $page);
-       dd((new PaginationPresenter($result))->items());
+                            
                             return new PaginationPresenter($result);
     }
 

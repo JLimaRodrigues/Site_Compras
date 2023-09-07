@@ -26,11 +26,13 @@ class SuporteController extends Controller
 
         $suportes = $this->service->paginate(
             page: $request->get('page', 1),
-            totalPerPage: $request->get('per_page', 10),
+            totalPerPage: $request->get('per_page', 1),
             filter: $request->filter
         );
+
+        $filters = ['filter' => $request->get('filter', '')];
         
-        return view('admin.suporte.index', compact('suportes'));
+        return view('admin.suporte.index', compact('suportes', 'filters'));
     }
 
     //método resonsável por mostrar detalhes especificos de um suporte
