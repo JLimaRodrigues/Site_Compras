@@ -3,13 +3,14 @@
 namespace App\DTO\Suportes;
 
 use App\Http\Requests\SuporteRequest;
+use App\Enums\SuporteStatus;
 
 class CriarSuporteDTO 
 {
 
     public function __construct(
         public string $assunto,
-        public string $status,
+        public SuporteStatus $status,
         public string $conteudo
     ){}
 
@@ -17,7 +18,7 @@ class CriarSuporteDTO
     {
         return new self(
             $request->assunto,
-            'a',
+            SuporteStatus::A,
             $request->conteudo
         );
     }

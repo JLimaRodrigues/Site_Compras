@@ -3,6 +3,7 @@
 namespace App\DTO\Suportes;
 
 use App\Http\Requests\SuporteRequest;
+use App\Enums\SuporteStatus;
 
 class AtualizarSuporteDTO 
 {
@@ -10,7 +11,7 @@ class AtualizarSuporteDTO
     public function __construct(
         public string $id,
         public string $assunto,
-        public string $status,
+        public SuporteStatus $status,
         public string $conteudo
     ){}
 
@@ -19,7 +20,7 @@ class AtualizarSuporteDTO
         return new self(
             $request->id,
             $request->assunto,
-            'a',
+            SuporteStatus::A,
             $request->conteudo
         );
     }
