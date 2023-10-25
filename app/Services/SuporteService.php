@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use stdClass;
-use App\DTO\{CriarSuporteDTO, AtualizarSuporteDTO};
+use App\DTO\Suportes\{CriarSuporteDTO, AtualizarSuporteDTO};
 use App\Repositories\{SuporteRepositorioInterface, PaginationInterface};
 
 /**

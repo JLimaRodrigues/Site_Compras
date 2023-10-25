@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\DTO\{CriarSuporteDTO, AtualizarSuporteDTO};
+use App\DTO\Suportes\{CriarSuporteDTO, AtualizarSuporteDTO};
 use stdClass;
 
 /**

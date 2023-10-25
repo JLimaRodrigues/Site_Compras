@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\DTO;
+namespace App\DTO\Suportes;
 
 use App\Http\Requests\SuporteRequest;
 

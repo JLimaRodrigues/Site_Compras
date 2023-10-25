@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Repositories\SuporteRepositorioInterface;
-use App\DTO\{CriarSuporteDTo, AtualizarSuporteDTO};
+use App\DTO\Suportes\{CriarSuporteDTo, AtualizarSuporteDTO};
 use App\Models\Suporte;
 use stdClass;
 
